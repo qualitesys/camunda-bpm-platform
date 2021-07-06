@@ -16,6 +16,7 @@
  */
 package org.camunda.bpm.engine.impl.util;
 
+import org.camunda.bpm.engine.ProcessEngineException;
 import org.camunda.bpm.engine.delegate.VariableScope;
 import org.camunda.bpm.engine.exception.NullValueException;
 import org.camunda.bpm.engine.impl.cmmn.model.CmmnCaseDefinition;
@@ -62,7 +63,8 @@ public class CallableElementUtil {
     try {
       return getCalledProcessDefinition(emptyVariableScope, callableElement,
         processDefinitionKey, tenantId);
-    } catch (NullValueException e) {
+    } catch (ProcessEngineException e) {
+      // if a process cannot be resolved, e.g., because it does not exist.
       return null;
     }
   }
