@@ -21,5 +21,5 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Maven site
-      run: mvn -B site --file pom.xml
+    - name: Build with Maven test
+      run: mvn -B test --file pom.xml
